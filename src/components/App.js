@@ -162,7 +162,7 @@ function App() {
   return (
     <div id="main">
       {states.map((s, i) => (
-        <div id={`state${i}`}>
+        <div id={`state${i + 1}`}>
           <p
             onClick={() => {
               if (s.name === selectedState) {
@@ -176,7 +176,7 @@ function App() {
           </p>
           <ul className={`${selectedState !== s.name ? "d-none" : ""}`}>
             {s.cities.map((c, ind) => (
-              <li id={`city${ind}`}>
+              <li id={`city${ind + 1}`}>
                 <p
                   onClick={() => {
                     if (c.name === selectedCity) {
@@ -190,7 +190,7 @@ function App() {
                 </p>
                 <ul className={`${selectedCity !== c.name ? "d-none" : ""}`}>
                   {c.towns.map((t, index) => (
-                    <li id={`town${index}`}>
+                    <li id={`town${index + 1}`}>
                       <p>{t.name}</p>
                     </li>
                   ))}
