@@ -155,7 +155,53 @@ const states = [
 ];
 
 function App() {
-  return <div id="main"></div>;
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [town, setTown] = useState("");
+
+  return (
+    <div id="main">
+      {states.map((s, i) => (
+        <div id={`state${i}`}>
+          <p
+            onClick={() => {
+              if (s.name === selectedState) {
+                setSelectedState("");
+              } else {
+                setSelectedState(s.name);
+              }
+            }}
+          >
+            {s.name}
+          </p>
+          <ul className={`${selectedState !== s.name ? "d-none" : ""}`}>
+            {s.cities.map((c, ind) => (
+              <li id={`city${ind}`}>
+                <p
+                  onClick={() => {
+                    if (c.name === selectedCity) {
+                      setSelectedCity("");
+                    } else {
+                      setSelectedCity(c.name);
+                    }
+                  }}
+                >
+                  {c.name}
+                </p>
+                <ul className={`${selectedCity !== c.name ? "d-none" : ""}`}>
+                  {c.towns.map((t, index) => (
+                    <li id={`town${index}`}>
+                      <p>{t.name}</p>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default App;
