@@ -1,14 +1,9 @@
 import React from "react";
 
-export default function Town(props){
-  
-  return(
-  <>
-    {props.town.towns.map((items,index)=>(
-    <div id={`towns${index+1}`} key={index}>
-      {items.name}
-      </div>
-  ))}
-  </>
+export default function Town({ name, index }) {
+  return (
+    <li>
+      <h5 id={"town" + (index + 1)}>{name}</h5>
+    </li>
   );
-  }
+}
